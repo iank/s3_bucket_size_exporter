@@ -1,21 +1,5 @@
 # S3BucketSizeExporter
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `s3_bucket_size_exporter` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:s3_bucket_size_exporter, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/s3_bucket_size_exporter>.
-
+Prometheus exporter for S3 bucket sizes. Normally you'd have CloudWatch or some
+admin API. This is for a contrived use case where only ListBuckets and
+ListObjectsV2 are available.

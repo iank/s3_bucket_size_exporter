@@ -8,9 +8,9 @@ defmodule S3MetricsWeb do
   def call(conn, [key_id: key_id, secret_key: secret_key, region: region, endpoint: endpoint]) do
     client = S3Metrics.create_client(key_id, secret_key, region, endpoint)
 
-    bucket_names = S3Metrics.list_buckets(client)
+    metrics = S3Metrics.get_metrics(client)
     conn
     |> put_resp_content_type("text/plain")
-    |> send_resp(200, bucket_names)
+    |> send_resp(200, Enum.join(metrics, "\n"))
   end
 end
