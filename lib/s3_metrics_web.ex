@@ -1,14 +1,16 @@
 defmodule S3MetricsWeb do
   use Plug.Builder
 
-  def start_link(_opts) do
-    {:ok, _} = Plug.Cowboy.http(S3MetricsWeb, [], port: 4000)
+  def start_link(opts) do
+    {:ok, _} = Plug.Cowboy.http(S3MetricsWeb, opts, port: 4000)
   end
 
-  def call(conn, _opts) do
-    metrics = S3Metrics.get_metrics()
+  def call(conn, [key_id: key_id, secret_key: secret_key, region: region, endpoint: endpoint]) do
+    client = S3Metrics.create_client(key_id, secret_key, region, endpoint)
+
+    bucket_names = S3Metrics.list_buckets(client)
     conn
     |> put_resp_content_type("text/plain")
-    |> send_resp(200, metrics)
+    |> send_resp(200, bucket_names)
   end
 end

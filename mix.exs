@@ -22,10 +22,10 @@ defmodule S3BucketSizeExporter.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:aws, "~> 0.8.0"},
-      {:hackney, "~> 1.17"},
-      {:plug_cowboy, "~> 2.5"},
-      {:plug, "~> 1.12"}
+      {:aws, "~> 0.13.3"},
+      {:hackney, "~> 1.18"},
+      {:plug_cowboy, "~> 2.6"},
+      {:plug, "~> 1.14"}
     ]
   end
 end

@@ -24,3 +24,6 @@ s3_bucket_size_exporter-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Environment variables for development
+activate.sh
