@@ -14,3 +14,22 @@ docker run -p 4000:4000 \
   -e "AWS_REGION=garage" \
   -e "AWS_ENDPOINT_HOST=s3.example.com" \
   s3-bucket-size-exporter
+```
+
+## docker-compose
+
+```
+version: "3"
+
+services:
+  s3-bucket-size-exporter:
+    image: iank1/s3-bucket-size-exporter:v0.1.0
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4000:4000"
+    environment:
+      AWS_KEY_ID=xxxx
+      AWS_SECRET_KEY=xxxx
+      AWS_REGION=garage
+      AWS_ENDPOINT_HOST=s3.example.com
+```
