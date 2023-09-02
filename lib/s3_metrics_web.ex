@@ -1,4 +1,5 @@
 defmodule S3MetricsWeb do
+  require Logger
   use Plug.Builder
 
   def start_link(opts) do
@@ -6,6 +7,7 @@ defmodule S3MetricsWeb do
   end
 
   def call(conn, [key_id: key_id, secret_key: secret_key, region: region, endpoint: endpoint]) do
+    Logger.info("Requesting S3 metrics...")
     client = S3Metrics.create_client(key_id, secret_key, region, endpoint)
 
     metrics = S3Metrics.get_metrics(client)
